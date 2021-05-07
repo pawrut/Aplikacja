@@ -1,0 +1,33 @@
+<div class="country-filters">
+  <div class="search-filter shadow">
+    <span class="fa fa-search"></span>
+    <input
+      type="text"
+      placeholder="Wyszukaj kraj..."
+      [(ngModel)]="searchFilter"
+    />
+  </div>
+  <div class="search-filter shadow">
+    <span class="fa fa-search"></span>
+    <input
+      type="text"
+      placeholder="Wyszukaj stolice..."
+      [(ngModel)]="capitalFilter"
+    />
+  </div>
+  <div class="search-filter shadow">
+    <span class="fa fa-search"></span>
+    <input
+      type="text"
+      placeholder="Wyszukaj walute..."
+      [(ngModel)]="regionFilter"
+    />
+  </div>
+</div>
+
+<div class="country-cards">
+  <app-country-card
+    *ngFor="let country of countries"
+    [country]="country"
+  ></app-country-card>
+</div>

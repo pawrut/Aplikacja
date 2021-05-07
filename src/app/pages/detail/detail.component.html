@@ -1,0 +1,67 @@
+<div *ngIf="country$ | async; let country" class="country">
+  <button class="button shadow" [routerLink]="'/'">
+    <span class="fa fa-arrow-left"></span>
+    Cofnij
+  </button>
+  <div class="country-layout">
+    <img [src]="country.flag" />
+    <div class="country-detail">
+      <h3>{{ country.name }}</h3>
+
+      <div class="country-info">
+        <div class="country-section">
+          <p>
+            <strong>Nazwa:</strong>
+            {{ country.nativeName }}
+          </p>
+          <p>
+            <strong>Populacja:</strong>
+            {{ country.population | number: '1.0' }}
+          </p>
+          <p>
+            <strong>Kontynent:</strong>
+            {{ country.region }}
+          </p>
+          <p>
+            <strong>Pod region:</strong>
+            {{ country.subregion }}
+          </p>
+          <p>
+            <strong>Stolica:</strong>
+            {{ country.capital }}
+          </p>
+        </div>
+
+        <div class="country-section">
+          <p>
+            <strong>Domena:</strong>
+            {{ country.topLevelDomain }}
+          </p>
+          <p>
+            <strong>Waluta:</strong>
+            {{ displayCurrencies(country.currencies) }}
+          </p>
+          <p>
+            <strong>Języki:</strong>
+            {{ displayLanguages(country.languages) }}
+          </p>
+        </div>
+      </div>
+      <div class="border-countries">
+        <p><strong>Kraje w sąsiedztwie:</strong></p>
+        <div
+          *ngIf="borderCountries$ | async; let borderCountries"
+          class="border-countries-buttons"
+        >
+          <div
+            *ngFor="let borderCountry of borderCountries"
+            class="button shadow"
+            [routerLink]="'/' + borderCountry.name"
+          >
+            {{ borderCountry.name }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
